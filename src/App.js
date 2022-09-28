@@ -6,6 +6,8 @@ import EditListing from './components/EditListing';
 import SearchBar from './components/Searchbar';
 import { ColorRing } from 'react-loader-spinner';
 
+const API_URL = process.env.REACT_APP_API_URL
+
 const App = () => {
 
   const [products,setProducts] = useState([]);
@@ -15,7 +17,7 @@ const App = () => {
 
   const getProducts = () => {
     axios
-    .get('https://infinite-plains-14112.herokuapp.com/etsy')
+    .get(`${API_URL}/etsy`)
     .then(
       (response) => setProducts(response.data),
       (err) => console.error(err)
@@ -24,7 +26,7 @@ const App = () => {
   }
 
   const handleCreate = (addListing) => {
-    axios.post('https://infinite-plains-14112.herokuapp.com/etsy', addListing)
+    axios.post(`${API_URL}/etsy`, addListing)
     .then((response) => {
       getProducts();
     })
@@ -32,14 +34,14 @@ const App = () => {
 
   const handleDelete = (deletedProduct) => {
     axios
-      .delete('https://infinite-plains-14112.herokuapp.com/etsy/' + deletedProduct.id)
+      .delete(`${API_URL}/etsy/` + deletedProduct.id)
       .then((response) => {
         setProducts(products.filter(product => product.id !== deletedProduct.id))
       })
   }
 
   const handleUpdate = (editProduct) => {
-    axios.put('https://infinite-plains-14112.herokuapp.com/etsy/' + editProduct.id, editProduct)
+    axios.put(`${API_URL}/etsy/` + editProduct.id, editProduct)
     .then((response) => {
       setProducts(products.map((product) => {
         return product.id !== editProduct.id ? product : editProduct
