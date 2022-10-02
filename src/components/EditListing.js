@@ -10,16 +10,15 @@ const EditListing = (props) => {
   const handleSubmit = (event) => {
     event.preventDefault()
     props.handleUpdate(product)
+    props.showEditButton()
   }
   
 
   return (
     <>
-      <details>
-        <summary>Edit Character</summary>
-        <form onSubmit={handleSubmit}>
+        <form className='createlistingform' key={product.id} onSubmit={handleSubmit}>
             <label htmlFor="category">Category: </label>
-            <select type="text" name="category" onChange={handleChange}>
+            <select className='add-input' type="text" name="category" onChange={handleChange}>
                 <option value={product.category}>{product.category}</option>
                 <option value="Jewelry">Jewelry</option>
                 <option value="Clothing">Clothing</option>
@@ -30,19 +29,18 @@ const EditListing = (props) => {
             </select>
             <br />
             <label htmlFor="title">Title: </label>
-            <input type="text" name="title" value={product.title} onChange={handleChange} />
+            <input className='add-input' type="text" name="title" value={product.title} onChange={handleChange} />
             <br />
             <label htmlFor="image">Image URL: </label>
-            <input type="text" name="image" value={product.image} onChange={handleChange} />
+            <input className='add-input' type="text" name="image" value={product.image} onChange={handleChange} />
             <br />
             <label htmlFor="price">Price: </label>
-            <input type="text" name="price" value={product.price} onChange={handleChange} />
+            <input className='add-input' type="text" name="price" value={product.price} onChange={handleChange} />
             <br />
             <label htmlFor="description">Description: </label>
-            <input type="text" name="description" value={product.description} onChange={handleChange} />
-            <input type="submit" />
+            <textarea className='add-input' type="text" name="description" value={product.description} onChange={handleChange} />
+            <input className='add-submit-button' type="submit" />
         </form>
-      </details>
     </>
   )
 }

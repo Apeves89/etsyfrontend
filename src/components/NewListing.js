@@ -16,9 +16,9 @@ const NewListing = (props) => {
 
   return(
     <>
-    <form onSubmit={handleSubmit}>
+    <form className="createlistingform" onSubmit={handleSubmit}>
         <label htmlFor="category">Category: </label>
-        <select type="text" name="category" onChange={handleChange}>
+        <select className="add-input" type="text" name="category" onChange={handleChange}>
             <option value=" ">Choose one</option>
             <option value="Jewelry">Jewelry</option>
             <option value="Clothing">Clothing</option>
@@ -29,17 +29,17 @@ const NewListing = (props) => {
         </select>
         <br />
         <label htmlFor="title">Title: </label>
-        <input type="text" name="title" value={product.title} onChange={handleChange} />
+        <input className="add-input" type="text" name="title" value={product.title} onChange={handleChange} />
         <br />
         <label htmlFor="image">Image URL: </label>
-        <input type="text" name="image" value={product.image} onChange={handleChange} />
+        <input className="add-input" type="text" name="image" value={product.image} onChange={handleChange} />
         <br />
         <label htmlFor="price">Price: </label>
-        <input type="text" name="price" value={product.price} onChange={handleChange} />
+        <input className="add-input" type="text" name="price" value={product.price} onChange={handleChange} />
         <br />
         <label htmlFor="description">Description: </label>
-        <input type="text" name="description" value={product.description} onChange={handleChange} />
-        <input type="submit" />
+        <input className="add-input" type="text" name="description" value={product.description} onChange={handleChange} />
+        <input className="add-submit-button" type="submit" />
     </form>
     </>
   )
